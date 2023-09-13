@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Dashboard from "./components/Dashboard"
-import Login from "./components/Login"
-import Signup from "./Signup"
-import Profile from "./Profile"
-import BookUser from "./BookUser"
+import Dashboard from "../src/components/Dashboard"
+import Login from "../src/components/Login"
+import Signup from "../src/components/Signup"
+import Profile from "../src/components/Profile"
+import BookUser from "../src/components/BookUser"
 
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
