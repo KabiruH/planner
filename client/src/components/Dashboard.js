@@ -3,6 +3,7 @@ import TimezoneSelect from "react-timezone-select";
 import { useNavigate } from "react-router-dom";
 import { time } from "../utils/resource";
 import { toast } from "react-toastify";
+import { handleCreateSchedule } from "../utils/resource"
 
 const Dashboard = () => {
     const [selectedTimezone, setSelectedTimezone] = useState({})
@@ -21,7 +22,7 @@ const Dashboard = () => {
             navigate("/");
         }
     }, [navigate]);
-    
+
 
     const [schedule, setSchedule] = useState([
         { day: "Sun", startTime: "", endTime: "" },
@@ -32,24 +33,26 @@ const Dashboard = () => {
         { day: "Fri", startTime: "", endTime: "" },
         { day: "Sat", startTime: "", endTime: "" },
     ]);
-    
 
-    
-//👇🏻 Runs when a user sign out
-const handleLogout = () => {
-    localStorage.removeItem("_id");
-    localStorage.removeItem("_myEmail");
-    navigate("/");
-};
+
+
+    //👇🏻 Runs when a user sign out
+    const handleLogout = () => {
+        localStorage.removeItem("_id");
+        localStorage.removeItem("_myEmail");
+        navigate("/");
+    };
 
     //👇🏻 Logs the user's schedule to the console after setting the availability
     const handleSaveSchedules = () => {
+        //👇🏻 ensures the user's timezone has been selected
         if (JSON.stringify(selectedTimezone) !== "{}") {
-            console.log(schedule);
+            handleCreateSchedule(selectedTimezone, schedule, navigate);
         } else {
             toast.error("Select your timezone");
         }
     };
+    
     return (
         <div>
             <nav className='dashboard__nav'>

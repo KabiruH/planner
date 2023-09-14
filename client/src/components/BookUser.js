@@ -6,6 +6,25 @@ const BookUser = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const { user } = useParams();
+    const [schedules, setSchedules] = useState([]);
+    const [timezone, setTimezone] = useState("");
+    const [error, setError] = useState(false);
+    const [receiverEmail, setReceiverEmail] = useState("");
+
+    useEffect(() => {
+        fetchBookingDetails(
+            user,
+            setError,
+            setTimezone,
+            setSchedules,
+            setReceiverEmail
+        );
+    }, [user]);
+    
+    if (error) {
+        return <ErrorPage error="User doesn't exist" />;
+    }
+    
 
     //👇🏻 logs the user's details to the console
     const handleSubmit = (e) => {
