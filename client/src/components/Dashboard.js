@@ -16,6 +16,13 @@ const Dashboard = () => {
         setSchedule(list);
     };
 
+    useEffect(() => {
+        if (!localStorage.getItem("_id")) {
+            navigate("/");
+        }
+    }, [navigate]);
+    
+
     const [schedule, setSchedule] = useState([
         { day: "Sun", startTime: "", endTime: "" },
         { day: "Mon", startTime: "", endTime: "" },

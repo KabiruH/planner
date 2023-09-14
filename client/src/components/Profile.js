@@ -1,9 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const Profile = () => {
     //👇🏻 The ID is the URL parameter for fetching the user's details.
+    const navigate = useNavigate ()
+    useEffect(() => {
+        if (!localStorage.getItem("_id")) {
+            navigate("/");
+        }
+    }, [navigate]);
+
     const { id } = useParams();
+
+    
+    
 
     return (
         <main className='profile'>

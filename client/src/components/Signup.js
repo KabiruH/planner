@@ -11,12 +11,12 @@ const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (userName.trim() && password.trim() && email.trim()) {
-            console.log(email, userName, password);
+            handleRegister(email, userName, password, navigate);
             setPassword("");
             setUsername("");
             setEmail("");
         }
-}
+    };
 
 return (
     <main className='signup'>
