@@ -40,7 +40,7 @@ const Profile = () => {
 
 
     return (
-        
+        <div>
         <main className='profile'>
             {loading ? (
                 <p>Loading...</p>
@@ -62,6 +62,7 @@ const Profile = () => {
                 </div>
             )}
         </main>
+        </div>
     );
     
 };
